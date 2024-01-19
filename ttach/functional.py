@@ -17,6 +17,11 @@ def vflip(x):
     return x.flip(2)
 
 
+def cflip(x):
+    """flip batch of images vertically"""
+    return x.flip(4)
+
+
 def sum(x1, x2):
     """sum of two tensors"""
     return x1 + x2
@@ -110,16 +115,15 @@ def _assemble_keypoints(x, y):
 
 def keypoints_hflip(keypoints):
     x, y = _disassemble_keypoints(keypoints)
-    return _assemble_keypoints(1. - x, y)
+    return _assemble_keypoints(1.0 - x, y)
 
 
 def keypoints_vflip(keypoints):
     x, y = _disassemble_keypoints(keypoints)
-    return _assemble_keypoints(x, 1. - y)
+    return _assemble_keypoints(x, 1.0 - y)
 
 
 def keypoints_rot90(keypoints, k=1):
-
     if k not in {0, 1, 2, 3}:
         raise ValueError("Parameter k must be in [0:3]")
     if k == 0:
@@ -127,10 +131,10 @@ def keypoints_rot90(keypoints, k=1):
     x, y = _disassemble_keypoints(keypoints)
 
     if k == 1:
-        xy = [y, 1. - x]
+        xy = [y, 1.0 - x]
     elif k == 2:
-        xy = [1. - x, 1. - y]
+        xy = [1.0 - x, 1.0 - y]
     elif k == 3:
-        xy = [1. - y, x]
+        xy = [1.0 - y, x]
 
     return _assemble_keypoints(*xy)

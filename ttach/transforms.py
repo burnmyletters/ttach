@@ -58,6 +58,33 @@ class VerticalFlip(DualTransform):
         return keypoints
 
 
+class ChannelFlip(DualTransform):
+    """Flip images vertically (up->down)"""
+
+    identity_param = False
+
+    def __init__(self):
+        super().__init__("apply", [False, True])
+
+    def apply_aug_image(self, image, apply=False, **kwargs):
+        if apply:
+            image = F.cflip(image)
+        return image
+
+    def apply_deaug_mask(self, mask, apply=False, **kwargs):
+        if apply:
+            mask = F.cflip(mask)
+        return mask
+
+    def apply_deaug_label(self, label, apply=False, **kwargs):
+        return label
+
+    def apply_deaug_keypoints(self, keypoints, apply=False, **kwargs):
+        if apply:
+            pass  # TODO: NotImplemented
+        return keypoints
+
+
 class Rotate90(DualTransform):
     """Rotate images 0/90/180/270 degrees
 
@@ -206,7 +233,6 @@ class Add(ImageOnlyTransform):
     identity_param = 0
 
     def __init__(self, values: List[float]):
-
         if self.identity_param not in values:
             values = [self.identity_param] + list(values)
         super().__init__("value", values)
@@ -242,7 +268,7 @@ class FiveCrops(ImageOnlyTransform):
 
     Args:
         crop_height (int): crop height in pixels
-        crop_width (int): crop width in pixels 
+        crop_width (int): crop width in pixels
     """
 
     def __init__(self, crop_height, crop_width):
