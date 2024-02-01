@@ -5,7 +5,7 @@ from .wrappers import (
 )
 from .base import Compose
 
-from .transforms_3d import (
+from .transforms import (
     HorizontalFlip,
     VerticalFlip,
     Rotate90,
@@ -16,6 +16,12 @@ from .transforms_3d import (
     Resize,
     ChannelFlip,
 )
+
+from .transforms_3d import HorizontalFlip as HorizontalFlip3d
+from .transforms_3d import VerticalFlip as VerticalFlip3d
+from .transforms_3d import ChannelFlip as ChannelFlip3d
+from .transforms_3d import Rotate90ch, Rotate90cv, Rotate90hv
+
 
 from . import aliases
 
