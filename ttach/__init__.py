@@ -14,7 +14,6 @@ from .transforms import (
     Multiply,
     FiveCrops,
     Resize,
-    ChannelFlip,
 )
 
 from .transforms_3d import HorizontalFlip as HorizontalFlip3d

@@ -25,8 +25,8 @@ def d4_transform3d():
             tta3d.HorizontalFlip(),
             tta3d.VerticalFlip(),
             tta3d.ChannelFlip(),
-            tta3d.Rotate90ch(angles=[0, 90, 180, 270]),
-            tta3d.Rotate90cv(angles=[0, 90, 180, 270]),
+            # tta3d.Rotate90ch(angles=[0, 90, 180, 270]),
+            # tta3d.Rotate90cv(angles=[0, 90, 180, 270]),
             tta3d.Rotate90hv(angles=[0, 90, 180, 270]),
         ]
     )
