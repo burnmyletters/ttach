@@ -19,7 +19,7 @@ def cflip_transform3d():
     return Compose([tta3d.ChannelFlip()])
 
 
-def d4_ransform3d():
+def d4_transform3d():
     return Compose(
         [
             tta3d.HorizontalFlip(),
