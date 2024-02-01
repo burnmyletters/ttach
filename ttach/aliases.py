@@ -1,9 +1,39 @@
 from .base import Compose
+from . import transforms_3d as tta3d
 from . import transforms as tta
 
 
+def flip_transform3d():
+    return Compose([tta3d.HorizontalFlip(), tta3d.VerticalFlip(), tta3d.ChannelFlip()])
+
+
+def hflip_transform3d():
+    return Compose([tta3d.HorizontalFlip()])
+
+
+def vflip_transform3d():
+    return Compose([tta3d.VerticalFlip()])
+
+
+def cflip_transform3d():
+    return Compose([tta3d.ChannelFlip()])
+
+
+def d4_ransform3d():
+    return Compose(
+        [
+            tta3d.HorizontalFlip(),
+            tta3d.VerticalFlip(),
+            tta3d.ChannelFlip(),
+            tta3d.Rotate90ch(angles=[0, 90, 180, 270]),
+            tta3d.Rotate90cv(angles=[0, 90, 180, 270]),
+            tta3d.Rotate90hv(angles=[0, 90, 180, 270]),
+        ]
+    )
+
+
 def flip_transform():
-    return Compose([tta.HorizontalFlip(), tta.VerticalFlip(), tta.ChannelFlip()])
+    return Compose([tta.HorizontalFlip(), tta.VerticalFlip()])
 
 
 def hflip_transform():
@@ -14,29 +44,11 @@ def vflip_transform():
     return Compose([tta.VerticalFlip()])
 
 
-def cflip_transform():
-    return Compose([tta.ChannelFlip()])
-
-
 def d4_transform():
     return Compose(
         [
             tta.HorizontalFlip(),
-            tta.VerticalFlip(),
-            tta.ChannelFlip(),
             tta.Rotate90(angles=[0, 90, 180, 270]),
-        ]
-    )
-
-def d4_3d_transform():
-    return Compose(
-        [
-            tta.HorizontalFlip(),
-            tta.VerticalFlip(),
-            tta.ChannelFlip(),
-            tta.Rotate90ch(angles=[0, 90, 180, 270]),
-            tta.Rotate90cv(angles=[0, 90, 180, 270]),
-            tta.Rotate90hv(angles=[0, 90, 180, 270]),
         ]
     )
 

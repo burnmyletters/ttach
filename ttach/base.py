@@ -2,7 +2,7 @@ import itertools
 from functools import partial
 from typing import List, Optional, Union
 
-from . import functional as F
+from . import functional_3d as F
 
 
 class BaseTransform:

@@ -5,7 +5,7 @@ from .wrappers import (
 )
 from .base import Compose
 
-from .transforms import (
+from .transforms_3d import (
     HorizontalFlip,
     VerticalFlip,
     Rotate90,
