@@ -2,9 +2,19 @@ import torch
 import torch.nn.functional as F
 
 
-def rot90(x, k=1):
+def rot90ch(x, k=1):
     """rotate batch of images by 90 degrees k times"""
     return torch.rot90(x, k, (2, 3))
+
+
+def rot90cv(x, k=1):
+    """rotate batch of images by 90 degrees k times"""
+    return torch.rot90(x, k, (2, 4))
+
+
+def rot90hv(x, k=1):
+    """rotate batch of images by 90 degrees k times"""
+    return torch.rot90(x, k, (3, 4))
 
 
 def hflip(x):
@@ -12,12 +22,12 @@ def hflip(x):
     return x.flip(3)
 
 
-def vflip(x):
+def cflip(x):
     """flip batch of images vertically"""
     return x.flip(2)
 
 
-def cflip(x):
+def vflip(x):
     """flip batch of images vertically"""
     return x.flip(4)
 
