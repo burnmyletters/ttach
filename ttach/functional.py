@@ -1,6 +1,10 @@
 import torch
 import torch.nn.functional as F
 
+def rot90(x, k=1):
+    """rotate batch of images by 90 degrees k times"""
+    return rot90ch(x, k=1)
+
 
 def rot90ch(x, k=1):
     """rotate batch of images by 90 degrees k times"""
