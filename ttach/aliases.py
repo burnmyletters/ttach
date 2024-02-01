@@ -28,6 +28,18 @@ def d4_transform():
         ]
     )
 
+def d4_3d_transform():
+    return Compose(
+        [
+            tta.HorizontalFlip(),
+            tta.VerticalFlip(),
+            tta.ChannelFlip(),
+            tta.Rotate90ch(angles=[0, 90, 180, 270]),
+            tta.Rotate90cv(angles=[0, 90, 180, 270]),
+            tta.Rotate90hv(angles=[0, 90, 180, 270]),
+        ]
+    )
+
 
 def multiscale_transform(scales, interpolation="nearest"):
     return Compose([tta.Scale(scales, interpolation=interpolation)])
